@@ -52,24 +52,20 @@ public class ZonaDeCobertura implements IListenerZonaCobertura {
 		return (zonaDeCobertura.getRadio() + otraZona.getRadio());
 	}
 
-	@Override
 	public void registrarseAZonaDeCobertura(IOrganizacionObserver observer) {
 		this.observers.add(observer);
 	}
 
-	@Override
 	public void dejarZonaDeCobertura(IOrganizacionObserver observer) {
 		this.observers.remove(observer);
 	}
 
-	@Override
 	public void notificarNuevaMuestra(Muestra muestra) {
 		for (IOrganizacionObserver observer : this.getObservers()) {
 			observer.nuevaMuestra(this, muestra);
 		}
 	}
 	
-	@Override
 	public void notificarNuevaVerificacion(Muestra muestra) {
 		for (IOrganizacionObserver observer : this.getObservers()) {
 			observer.nuevaVerificacion(this, muestra);

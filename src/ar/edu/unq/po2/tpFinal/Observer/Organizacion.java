@@ -42,13 +42,11 @@ public class Organizacion implements IOrganizacionObserver {
 		return verificacionMuestra;
 	}
 
-	@Override
 	public void nuevaMuestra(ZonaDeCobertura zona, Muestra muestra) {
 		this.getNuevaMuestra().nuevoEvento(this, zona, muestra);
 
 	}
 
-	@Override
 	public void nuevaVerificacion(ZonaDeCobertura zonaDeCobertura, Muestra muestra) {
 		this.getVerificacionMuestra().nuevoEvento(this, zonaDeCobertura, muestra);
 	}
