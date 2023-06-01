@@ -1,5 +1,15 @@
 package ar.edu.unq.po2.tpFinal.EstadoDeUsuario;
 
-public class Usuario {
+import java.util.List;
 
+import ar.edu.unq.po2.tpFinal.AplicacionWeb;
+import ar.edu.unq.po2.tpFinal.Muestra;
+
+public class Usuario {
+	private String identificacion;
+	private List<Muestra> muestras;
+	private AplicacionWeb aplicacionDeMuestra;
+	private EstadoDeUsuario estadoDeUsuario;
 }
+
+
