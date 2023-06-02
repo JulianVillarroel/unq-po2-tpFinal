@@ -7,5 +7,5 @@ public interface EstadoDeUsuario {
 	public void opinarSobreMuestra(Muestra muestra,Opinion opinion, Usuario usuario);
 	public boolean esUsuarioBasico();
 	public void actualizarCategoria(Usuario usuario);
-	public void agregaroppinionAMuestraMasVotadaPorExperto(Usuario usuario, Muestra muestra, Opinion opinion);	
+	public void agregaroppinionAMuestraMasVotadaPorExperto(Usuario usuario, Muestra muestra, Opinion opinion);
 }
