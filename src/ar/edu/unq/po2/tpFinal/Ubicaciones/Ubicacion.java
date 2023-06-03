@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ubicacion {
-	
+
 	private Double latitud;
 	private Double longitud;
-	
 
 	public Double getLatitud() {
 		return latitud;

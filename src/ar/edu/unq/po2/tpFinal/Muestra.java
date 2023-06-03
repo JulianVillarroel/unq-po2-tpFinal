@@ -16,7 +16,7 @@ import ar.edu.unq.po2.tpFinal.EstadoDeUsuario.Usuario;
 import ar.edu.unq.po2.tpFinal.Ubicaciones.Ubicacion;
 
 public class Muestra {
-	
+
 	BufferedImage fotoVinchuca;
 	Calificacion especie;
 	Usuario usuario;

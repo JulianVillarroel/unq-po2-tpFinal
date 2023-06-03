@@ -10,7 +10,7 @@ import ar.edu.unq.po2.tpFinal.Observer.IListenerZonaCobertura;
 import ar.edu.unq.po2.tpFinal.Observer.IOrganizacionObserver;
 
 public class ZonaDeCobertura implements IListenerZonaCobertura {
-	
+
 	private String nombreDeZona;
 	private Ubicacion epicentro;
 	private Integer radio;
@@ -65,7 +65,7 @@ public class ZonaDeCobertura implements IListenerZonaCobertura {
 			observer.nuevaMuestra(this, muestra);
 		}
 	}
-	
+
 	public void notificarNuevaVerificacion(Muestra muestra) {
 		for (IOrganizacionObserver observer : this.getObservers()) {
 			observer.nuevaVerificacion(this, muestra);
@@ -73,7 +73,7 @@ public class ZonaDeCobertura implements IListenerZonaCobertura {
 	}
 
 	public void agregarMuestra(Muestra muestra) {
-		if(muestra.getUbicacion().distanciaHasta(this.getEpicentro()) < this.getRadio()) {
+		if (muestra.getUbicacion().distanciaHasta(this.getEpicentro()) < this.getRadio()) {
 			muestras.add(muestra);
 			this.notificarNuevaMuestra(muestra);
 		}
@@ -85,7 +85,6 @@ public class ZonaDeCobertura implements IListenerZonaCobertura {
 
 	public Set<ZonaDeCobertura> zonasQueSolapan(Set<ZonaDeCobertura> zonas) {
 		Set<ZonaDeCobertura> zonasQueSolapan = new HashSet<ZonaDeCobertura>();
-
 		for (ZonaDeCobertura zona : zonas) {
 			this.agregarSiSeSolapa(zona, zonasQueSolapan);
 		}
@@ -97,7 +96,7 @@ public class ZonaDeCobertura implements IListenerZonaCobertura {
 			zonasQueSolapan.add(zona);
 		}
 	}
-	
+
 	public List<Muestra> muestrasCercanas(Muestra muestra, Double distancia) {
 		List<Muestra> muestrascercanas = new ArrayList<Muestra>();
 		for (Muestra m : this.getMuestras()) {

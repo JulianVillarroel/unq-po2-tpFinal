@@ -6,14 +6,26 @@ import ar.edu.unq.po2.tpFinal.Enumerativos.Calificacion;
 
 public class Opinion {
 
-	public LocalDate getFechaDeEmision() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	private Calificacion calificacion;
+	private LocalDate fechaDeEmision;
 
 	public Calificacion getCalificacion() {
-		// TODO Auto-generated method stub
-		return null;
+		return calificacion;
+	}
+
+	public LocalDate getFechaDeEmision() {
+		return fechaDeEmision;
+	}
+
+	public Opinion(Calificacion calificacion) {
+		fechaDeEmision = LocalDate.now();
+		this.calificacion = calificacion;
+
+	}
+
+	public void setCalificacion(Calificacion calificacionDeOpinion) {
+		this.calificacion = calificacionDeOpinion;
+
 	}
 
 }
