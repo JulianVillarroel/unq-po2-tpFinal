@@ -15,4 +15,9 @@ public class BusquedaCompuestaAnd extends BusquedaCompuesta {
 		return lista.contains(elemento);
 	}
 
+	@Override
+	protected ArrayList<Muestra> casoBase(ArrayList<Muestra> muestras) {
+		return muestras;
+	}
+
 }
