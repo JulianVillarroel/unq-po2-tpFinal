@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ar.edu.unq.po2.tpFinal.Muestra;
 
-public abstract class BusquedaCompuesta implements BusquedaDeMuestra {
+public abstract class BusquedaCompuesta extends BusquedaDeMuestra {
 
 	protected ArrayList<BusquedaDeMuestra> listaBusquedas;
 
@@ -14,6 +14,7 @@ public abstract class BusquedaCompuesta implements BusquedaDeMuestra {
 		
 	}
 	
+	@Override
 	public ArrayList<Muestra> buscar(ArrayList<Muestra> muestras){
 		ArrayList<Muestra> resultado = muestras;
 		for(BusquedaDeMuestra busqueda: this.listaBusquedas) {
@@ -44,6 +45,6 @@ public abstract class BusquedaCompuesta implements BusquedaDeMuestra {
 		return resultado;
 	}
 
-	protected abstract boolean condicionFormato(ArrayList<Muestra> lista, Muestra elemento);	
+	protected abstract boolean condicionFormato(ArrayList<Muestra> lista, Muestra elemento);
 	
 }
