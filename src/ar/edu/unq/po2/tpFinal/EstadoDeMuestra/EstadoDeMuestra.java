@@ -6,10 +6,10 @@ import ar.edu.unq.po2.tpFinal.EstadoDeUsuario.Usuario;
 
 public interface EstadoDeMuestra {
 
-	String getNivelDeVerificacion(Muestra muestra);
+	public void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario) throws Exception;
 
-	void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario);
+	public String getNivelDeVerificacion(Muestra muestra);
 
-	void actualizarEstado(Muestra muestra);
+	public void actualizarEstado(Muestra muestra) throws Exception;
 	
 }

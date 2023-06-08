@@ -8,20 +8,26 @@ public class EstadoDeMuestraVotada implements EstadoDeMuestra {
 
 	@Override
 	public String getNivelDeVerificacion(Muestra muestra) {
-		// TODO Auto-generated method stub
-		return null;
+		return "votada";
 	}
 
 	@Override
-	public void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+	public void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario) throws Exception {
+		if (!muestra.contieneAlUsuario(usuario)) {
+			muestra.agregarLaOpinionDelUsuario(opinion, usuario);
+		} else {
+			throw new Exception("El usuario ya ha opinado sobre la muestra");
+		}
 	}
 
 	@Override
-	public void actualizarEstado(Muestra muestra) {
-		// TODO Auto-generated method stub
-		
+	public void actualizarEstado(Muestra muestra) throws Exception {
+		this.limpiarHistorialDeOpiniones(muestra);
+		muestra.setEstadoDeMuestra(new EstadoDeMuestraVotadaPorExperto());
+
 	}
 
+	private void limpiarHistorialDeOpiniones(Muestra muestra) {
+		muestra.getHistorialDeOpiniones().clear();
+	}
 }

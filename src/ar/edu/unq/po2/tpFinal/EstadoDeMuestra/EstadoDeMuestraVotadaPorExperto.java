@@ -4,24 +4,28 @@ import ar.edu.unq.po2.tpFinal.Muestra;
 import ar.edu.unq.po2.tpFinal.Opinion;
 import ar.edu.unq.po2.tpFinal.EstadoDeUsuario.Usuario;
 
-public class EstadoDeMuestraVotadaPorExperto implements EstadoDeMuestra{
+public class EstadoDeMuestraVotadaPorExperto implements EstadoDeMuestra {
 
 	@Override
-	public String getNivelDeVerificacion(Muestra muestra) {
-		// TODO Auto-generated method stub
-		return null;
+	public void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario) throws Exception {
+		if (!muestra.contieneAlUsuario(usuario)) {
+			usuario.agregarOpinionAMuestraVotadaPorExperto(muestra, opinion);
+		} else {
+			throw new Exception("El usuario ya ha opinado sobre la muestra");
+		}
 	}
 
 	@Override
-	public void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+	public String getNivelDeVerificacion(Muestra muestra) {
+		return "votada";
 	}
 
 	@Override
 	public void actualizarEstado(Muestra muestra) {
-		// TODO Auto-generated method stub
-		
+		if (muestra.coincidenDosExpertosEnSuCalificacionDeOpinion()) {
+			muestra.setEstadoDeMuestra(new EstadoDeMuestraVerificada());
+		}
+
 	}
 
 }

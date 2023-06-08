@@ -7,21 +7,19 @@ import ar.edu.unq.po2.tpFinal.EstadoDeUsuario.Usuario;
 public class EstadoDeMuestraVerificada implements EstadoDeMuestra {
 
 	@Override
+	public void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario) throws Exception {
+		throw new Exception("Nadie puede opinar sobre muestras verificadas");
+	}
+
+	@Override
 	public String getNivelDeVerificacion(Muestra muestra) {
-		// TODO Auto-generated method stub
-		return null;
+		return "verificada";
 	}
 
 	@Override
-	public void agregarOpinion(Muestra muestra, Opinion opinion, Usuario usuario) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void actualizarEstado(Muestra muestra) throws Exception {
+		throw new Exception("La muestra ya esta verificada");
 
-	@Override
-	public void actualizarEstado(Muestra muestra) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

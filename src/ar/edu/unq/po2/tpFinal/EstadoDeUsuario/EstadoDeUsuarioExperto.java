@@ -3,30 +3,28 @@ package ar.edu.unq.po2.tpFinal.EstadoDeUsuario;
 import ar.edu.unq.po2.tpFinal.Muestra;
 import ar.edu.unq.po2.tpFinal.Opinion;
 
-public class EstadoDeUsuarioExperto implements EstadoDeUsuario{
-
+public class EstadoDeUsuarioExperto extends EstadoDeUsuario {
 	@Override
-	public void opinarSobreMuestra(Muestra muestra, Opinion opinion, Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+	public void opinarSobreMuestra(Muestra muestra, Opinion opinion, Usuario usuario) throws Exception {
+		muestra.verificarMuestraConOpinionDeUsuario(opinion, usuario);
+
 	}
 
 	@Override
-	public boolean esUsuarioBasico() {
-		// TODO Auto-generated method stub
-		return false;
+	public Boolean esUsuarioExperto() {
+		return true;
 	}
 
 	@Override
 	public void actualizarCategoria(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+		if (!usuario.cumpleConRevisionesNecesarias() | !usuario.cumpleConEnviosNecesarios()) {
+			usuario.setEstadoDeUsuario(new EstadoDeUsuarioBasico());
+		}
 	}
 
 	@Override
-	public void agregaroppinionAMuestraMasVotadaPorExperto(Usuario usuario, Muestra muestra, Opinion opinion) {
-		// TODO Auto-generated method stub
-		
+	public void agregarOpinionAMuestraVotadaPorExperto(Usuario usuario, Muestra muestra, Opinion opinion)
+			throws Exception {
+		muestra.agregarLaOpinionDelUsuario(opinion, usuario);
 	}
-
 }
