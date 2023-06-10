@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Set;
 
 import ar.edu.unq.po2.tpFinal.EstadoDeUsuario.Usuario;
+import ar.edu.unq.po2.tpFinal.Filtros.BusquedaDeMuestra;
 import ar.edu.unq.po2.tpFinal.Ubicaciones.ZonaDeCobertura;
 
 public class AplicacionWeb {
 
-	private List<Muestra> muestrasRegistradas;
+	private ArrayList<Muestra> muestrasRegistradas;
 	private Set<Usuario> usuariosRegistrados;
 	private Set<ZonaDeCobertura> zonasDeCobertura;
 
@@ -57,9 +58,9 @@ public class AplicacionWeb {
 		return zona.muestrasCercanas(muestra, kilometros);
 	}
 
-	//public List<Muestra> filtrarMuestras(IFiltroBusquedaMuestra filtro) {
-	//	return filtro.buscarMuestras(muestrasRegistradas);                           acomodar idea
-	//}
+	public List<Muestra> filtrarMuestras(BusquedaDeMuestra filtro) {
+		return filtro.buscar(this.muestrasRegistradas);
+	}
 
 	public Set<ZonaDeCobertura> zonasQueSeSolapanCon(ZonaDeCobertura zonaDeCobertura) {
 		return zonaDeCobertura.zonasQueSolapan(this.listaDeZonasSin(zonaDeCobertura));
@@ -73,11 +74,10 @@ public class AplicacionWeb {
 		return listaNueva;
 	}
 
-	//ublic void actualizarCategoriaDeUsuariosALaFecha() {
-	//	for (Usuario usuario : this.usuariosRegistrados) {   acomodar idea
-	//		usuario.actualizarCategoria();
-	//	}
-	//}
+	public void actualizarCategoriaDeUsuariosALaFecha() {
+		for (Usuario usuario : this.usuariosRegistrados) {
+			usuario.actualizarCategoria();
+		}
+	}
 
 }
-
