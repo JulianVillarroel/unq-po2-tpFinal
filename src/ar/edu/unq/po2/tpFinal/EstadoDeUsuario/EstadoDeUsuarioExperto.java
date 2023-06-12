@@ -16,7 +16,7 @@ public class EstadoDeUsuarioExperto extends EstadoDeUsuario {
 	}
 
 	@Override
-	public void actualizarCategoria(Usuario usuario) {
+	public void actualizarCategoria(Usuario usuario) { 
 		if (!usuario.cumpleConRevisionesNecesarias() | !usuario.cumpleConEnviosNecesarios()) {
 			usuario.setEstadoDeUsuario(new EstadoDeUsuarioBasico());
 		}
