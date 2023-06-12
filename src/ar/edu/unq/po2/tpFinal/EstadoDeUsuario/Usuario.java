@@ -13,7 +13,7 @@ import ar.edu.unq.po2.tpFinal.Opinion;
 
 public class Usuario {
 
-	private String identificacion;
+	private String identificacion; 
 	private Set<Muestra> muestras;
 	private List<Opinion> opinionesEnviadas;
 	private EstadoDeUsuario estadoDeUsuario;

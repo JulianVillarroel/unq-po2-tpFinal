@@ -11,7 +11,7 @@ public class EstadoDeUsuarioBasico extends EstadoDeUsuario {
 	}
 
 	@Override
-	public Boolean esUsuarioBasico() {
+	public Boolean esUsuarioBasico() { 
 		return true;
 	}
 
