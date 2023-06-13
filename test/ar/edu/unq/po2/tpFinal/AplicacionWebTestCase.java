@@ -18,7 +18,6 @@ import ar.edu.unq.po2.tpFinal.Filtros.BusquedaDeMuestra;
 import ar.edu.unq.po2.tpFinal.Ubicaciones.ZonaDeCobertura;
 import ar.edu.unq.po2.tpFinal.Ubicaciones.Ubicacion;
 
-
 class AplicacionWebTestCase {
 
 	AplicacionWeb aplicacionWeb;
@@ -46,7 +45,7 @@ class AplicacionWebTestCase {
 	}
 
 	@Test
-	void testSeRegistraUnaMuestraYHaySoloUnaMuestraEnPaginaWeb(){
+	void testSeRegistraUnaMuestraYHaySoloUnaMuestraEnPaginaWeb() {
 		aplicacionWeb.registrarMuestra(muestra);
 
 		assertEquals(1, aplicacionWeb.getMuestrasRegistradas().size());
@@ -164,6 +163,5 @@ class AplicacionWebTestCase {
 
 		verify(zonaDeCobertura).muestrasCercanas(muestra, 1359.2545257553352);
 	}
-
 
 }

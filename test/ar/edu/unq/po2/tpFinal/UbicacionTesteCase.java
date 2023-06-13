@@ -28,7 +28,7 @@ class UbicacionTesteCase {
 	        ubicacion1 = new Ubicacion(50d, 40d);
 	        zona = new ZonaDeCobertura("Bernal", ubicacion1, 30);
 
-	        muestra = mock(Muestra.class);
+			muestra = mock(Muestra.class);
 	        otraMuestra = mock(Muestra.class);
 	        otraMuestraMuyLejos = mock(Muestra.class);
 

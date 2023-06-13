@@ -22,13 +22,13 @@ import ar.edu.unq.po2.tpFinal.Ubicaciones.Ubicacion;
 
 class UsuarioTestCase {
 
-	Usuario usuarioBasico; // sut
-	Usuario usuarioExperto; // sut
+	Usuario usuarioBasico;
+	Usuario usuarioExperto;
 	Usuario usuarioExpertoJuli;
-	Usuario usuarioEspecialista; // sut
+	Usuario usuarioEspecialista;
 	EstadoDeUsuario estadoExperto;
 
-	AplicacionWeb app;// doc
+	AplicacionWeb app;
 	Muestra muestra, muestra2, muestra3, muestra4, muestra5, muestra6, muestra7, muestra8, muestra9, muestra10;
 	Ubicacion ubicacion1;
 	BufferedImage imagen1;
@@ -41,7 +41,7 @@ class UsuarioTestCase {
 		estadoExperto = mock(EstadoDeUsuario.class);
 		when(estadoExperto.esUsuarioExperto()).thenReturn(true);
 		app = mock(AplicacionWeb.class);
-		usuarioBasico = new Usuario("Nahu");
+		usuarioBasico = new Usuario("Hecti");
 		usuarioExperto = new Usuario("Jony");
 		usuarioExpertoJuli = new Usuario("Fede");
 		usuarioEspecialista = new Usuario("Villa");
@@ -96,7 +96,7 @@ class UsuarioTestCase {
 	void testConoceSusDatos() {
 		assertEquals(usuarioBasico.getEnvios(), 0);
 		assertEquals(usuarioBasico.getRevisiones(), 0);
-		assertEquals(usuarioBasico.getIdentificacion(), "Nahu");
+		assertEquals(usuarioBasico.getIdentificacion(), "Hecti");
 	}
 
 	@Test
