@@ -21,7 +21,7 @@ class ZonaDeCoberturaTestCase {
 	IOrganizacionObserver suscriptor1;
 	IOrganizacionObserver suscriptor2;
 	Ubicacion ubicacion1, ubicacion2, ubicacion3, ubicacion4, ubicacion5;
-	Muestra muestra, otraMuestra; 
+	Muestra muestra, otraMuestra;
 
 	@BeforeEach
 	void setUp() throws Exception {

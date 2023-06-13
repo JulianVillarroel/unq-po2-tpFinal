@@ -18,11 +18,10 @@ import ar.edu.unq.po2.tpFinal.Ubicaciones.ZonaDeCobertura;
 
 class MuestraTestCase {
 
-
 	Muestra muestra;
 	Usuario usuarioBasico;
 	Usuario usuarioExperto;
-	Usuario jonyExperto; 
+	Usuario jonyExperto;
 	Usuario julianBasico;
 	Usuario villaBasico;
 	Opinion opinionChincheFoliada;
@@ -52,7 +51,7 @@ class MuestraTestCase {
 
 		muestra = new Muestra(fotoVinchuca, ubicacion, julianBasico, opinionGuasayana, LocalDate.of(2022, 5, 13));
 
-		when(usuarioBasico.esUsuarioBasico()).thenReturn(true); 
+		when(usuarioBasico.esUsuarioBasico()).thenReturn(true);
 		when(usuarioExperto.esUsuarioExperto()).thenReturn(true);
 		when(jonyExperto.esUsuarioExperto()).thenReturn(true);
 		when(julianBasico.esUsuarioBasico()).thenReturn(true);
@@ -228,6 +227,11 @@ class MuestraTestCase {
 
 		assertEquals(Calificacion.CHINCHE_FOLIADA, muestra.getResultadoActual());
 	}
-	
+
+	@Test
+	void test() {
+
+	}
+
 
 }

@@ -21,12 +21,12 @@ import ar.edu.unq.po2.tpFinal.EstadoDeUsuario.Usuario;
 import ar.edu.unq.po2.tpFinal.Ubicaciones.Ubicacion;
 
 class UsuarioTestCase {
-	
-	Usuario usuarioBasico; //sut
-	Usuario usuarioExperto; //sut
+
+	Usuario usuarioBasico; // sut
+	Usuario usuarioExperto; // sut
 	Usuario usuarioExpertoJuli;
-	Usuario usuarioEspecialista; //sut
-	EstadoDeUsuario estadoExperto; 
+	Usuario usuarioEspecialista; // sut
+	EstadoDeUsuario estadoExperto;
 
 	AplicacionWeb app;// doc
 	Muestra muestra, muestra2, muestra3, muestra4, muestra5, muestra6, muestra7, muestra8, muestra9, muestra10;
@@ -35,14 +35,14 @@ class UsuarioTestCase {
 	Opinion opinion, opinion1;
 	List<Opinion> opiniones;
 	Set<Muestra> muestrasEnviadas;
-	
+
 	@BeforeEach
-	void setUp() throws Exception{
+	void setUp() throws Exception {
 		estadoExperto = mock(EstadoDeUsuario.class);
 		when(estadoExperto.esUsuarioExperto()).thenReturn(true);
 		app = mock(AplicacionWeb.class);
 		usuarioBasico = new Usuario("Nahu");
-		usuarioExperto = new Usuario("Jony"); 
+		usuarioExperto = new Usuario("Jony");
 		usuarioExpertoJuli = new Usuario("Fede");
 		usuarioEspecialista = new Usuario("Villa");
 		opinion = mock(Opinion.class);
@@ -72,7 +72,7 @@ class UsuarioTestCase {
 		when(muestra9.getFechaDeCreacion()).thenReturn(LocalDate.now());
 		when(muestra10.getFechaDeCreacion()).thenReturn(LocalDate.now());
 
-		muestrasEnviadas = new HashSet<Muestra>(); 
+		muestrasEnviadas = new HashSet<Muestra>();
 		muestrasEnviadas.add(muestra);
 		muestrasEnviadas.add(muestra2);
 		muestrasEnviadas.add(muestra3);
@@ -83,75 +83,75 @@ class UsuarioTestCase {
 		muestrasEnviadas.add(muestra8);
 		muestrasEnviadas.add(muestra9);
 		muestrasEnviadas.add(muestra10);
-		
+
 		// PARA TESTEAR LAS OPINIONES ENVIADAS EN LOS ULTIMOS 30 DIAS
 
 		opiniones = Arrays.asList(opinion, opinion, opinion, opinion, opinion, opinion, opinion, opinion, opinion,
 				opinion, opinion, opinion, opinion, opinion, opinion, opinion, opinion, opinion, opinion, opinion,
 				opinion);
-		}
-		// TESTS DEL USUARIO BASICO
-	
-		@Test
-		void testConoceSusDatos() {
-			assertEquals(usuarioBasico.getEnvios(), 0); 
-			assertEquals(usuarioBasico.getRevisiones(), 0);
-			assertEquals(usuarioBasico.getIdentificacion(), "Nahu");
-		}
-		
-		@Test
-		void testEsUsuarioBasico() {
-			assertTrue(usuarioBasico.esUsuarioBasico());
-		}
+	}
+	// TESTS DEL USUARIO BASICO
 
-		@Test
-		void testNoEsUsuarioExperto() {
-			assertFalse(usuarioBasico.esUsuarioExperto());
-		}
+	@Test
+	void testConoceSusDatos() {
+		assertEquals(usuarioBasico.getEnvios(), 0);
+		assertEquals(usuarioBasico.getRevisiones(), 0);
+		assertEquals(usuarioBasico.getIdentificacion(), "Nahu");
+	}
 
-		@Test
-		void testlasOpinionesA30DiasDeLaFechaActual() {
-			usuarioBasico.setOpinionesEnviadas(opiniones);
-			assertEquals(usuarioBasico.cantidadDeOpinionesEnLosUltimos30Dias(), 21);
-		}
+	@Test
+	void testEsUsuarioBasico() {
+		assertTrue(usuarioBasico.esUsuarioBasico());
+	}
 
-		@Test
-		void testLasMuestrasEstanDentroDe30DiasDeLaFechaActual() {
-			usuarioBasico.setMuestras(muestrasEnviadas);
-			assertEquals(usuarioBasico.cantidadDeEnviosEnLosUltimos30Dias(), 10);
-		}
+	@Test
+	void testNoEsUsuarioExperto() {
+		assertFalse(usuarioBasico.esUsuarioExperto());
+	}
 
-		@Test
-		void testUsuarioCambiaSuCategoriaAExperto() {
-			usuarioBasico.setMuestras(muestrasEnviadas);
-			usuarioBasico.setOpinionesEnviadas(opiniones);
-			usuarioBasico.actualizarCategoria();
-			assertTrue(usuarioBasico.esUsuarioExperto());
-		} 
-		
-		// TESTS DEL USUARIO EXPERTO
-		@Test
-		void testUsuarioAgregarOpinionAMuestraVotadaPorExperto() throws Exception {
-			muestra.verificarMuestra();
-			usuarioExperto.agregarOpinionEnviada(opinion);
-			muestra.verificarMuestra();
+	@Test
+	void testlasOpinionesA30DiasDeLaFechaActual() {
+		usuarioBasico.setOpinionesEnviadas(opiniones);
+		assertEquals(usuarioBasico.cantidadDeOpinionesEnLosUltimos30Dias(), 21);
+	}
 
-			assertThrows(Exception.class, () -> usuarioBasico.agregarOpinionAMuestraVotadaPorExperto(muestra, opinion));
-		}
+	@Test
+	void testLasMuestrasEstanDentroDe30DiasDeLaFechaActual() {
+		usuarioBasico.setMuestras(muestrasEnviadas);
+		assertEquals(usuarioBasico.cantidadDeEnviosEnLosUltimos30Dias(), 10);
+	}
 
-		@Test
-		void testEsUsuarioExperto() {
-			usuarioExperto.setEstadoDeUsuario(estadoExperto);
-			assertTrue(usuarioExperto.esUsuarioExperto());
-		}
+	@Test
+	void testUsuarioCambiaSuCategoriaAExperto() {
+		usuarioBasico.setMuestras(muestrasEnviadas);
+		usuarioBasico.setOpinionesEnviadas(opiniones);
+		usuarioBasico.actualizarCategoria();
+		assertTrue(usuarioBasico.esUsuarioExperto());
+	}
 
-		@Test
-		void testNoEsUsuarioBasico() {
-			usuarioExperto.setEstadoDeUsuario(estadoExperto);
-			assertFalse(usuarioExperto.esUsuarioBasico());
-		}
+	// TESTS DEL USUARIO EXPERTO
+	@Test
+	void testUsuarioAgregarOpinionAMuestraVotadaPorExperto() throws Exception {
+		muestra.verificarMuestra();
+		usuarioExperto.agregarOpinionEnviada(opinion);
+		muestra.verificarMuestra();
 
-		@Test
+		assertThrows(Exception.class, () -> usuarioBasico.agregarOpinionAMuestraVotadaPorExperto(muestra, opinion));
+	}
+
+	@Test
+	void testEsUsuarioExperto() {
+		usuarioExperto.setEstadoDeUsuario(estadoExperto);
+		assertTrue(usuarioExperto.esUsuarioExperto());
+	}
+
+	@Test
+	void testNoEsUsuarioBasico() {
+		usuarioExperto.setEstadoDeUsuario(estadoExperto);
+		assertFalse(usuarioExperto.esUsuarioBasico());
+	}
+
+	@Test
 		void testLasOpinionesNoEstanDentroDe30DiasDeLaFecha() {
 			when(opinion.getFechaDeEmision()).thenReturn(LocalDate.of(2020, 5, 5));
 			opiniones = Arrays.asList(opinion);
@@ -159,7 +159,7 @@ class UsuarioTestCase {
 			assertEquals(usuarioExperto.cantidadDeOpinionesEnLosUltimos30Dias(), 0);
 		}
 
-		@Test
+	@Test
 		void testLasMuestrasNoEstanDentroDe30DiasDeLaFecha() {
 			when(muestra.getFechaDeCreacion()).thenReturn(LocalDate.of(2020, 5, 5));
 			muestrasEnviadas = new HashSet<Muestra>();
@@ -170,81 +170,79 @@ class UsuarioTestCase {
 
 		}
 
-		@Test
-		void testUsuarioBasicoQueTieneCategoriaExpertoBajaACategoriaBasicoPorNoCumplirLosRequisitos() {
-			usuarioBasico.actualizarCategoria();
-			usuarioBasico.setMuestras(muestrasEnviadas);
-			usuarioBasico.setOpinionesEnviadas(opiniones);
-			usuarioBasico.actualizarCategoria();
-			Boolean usuarioConEstadoAnteriorExperto = usuarioBasico.esUsuarioExperto();
+	@Test
+	void testUsuarioBasicoQueTieneCategoriaExpertoBajaACategoriaBasicoPorNoCumplirLosRequisitos() {
+		usuarioBasico.actualizarCategoria();
+		usuarioBasico.setMuestras(muestrasEnviadas);
+		usuarioBasico.setOpinionesEnviadas(opiniones);
+		usuarioBasico.actualizarCategoria();
+		Boolean usuarioConEstadoAnteriorExperto = usuarioBasico.esUsuarioExperto();
 
-			when(muestra.getFechaDeCreacion()).thenReturn(LocalDate.of(2020, 5, 5));
-			muestrasEnviadas = new HashSet<Muestra>();
-			muestrasEnviadas.add(muestra);
+		when(muestra.getFechaDeCreacion()).thenReturn(LocalDate.of(2020, 5, 5));
+		muestrasEnviadas = new HashSet<Muestra>();
+		muestrasEnviadas.add(muestra);
 
-			usuarioBasico.setMuestras(muestrasEnviadas);
-			usuarioBasico.actualizarCategoria();
+		usuarioBasico.setMuestras(muestrasEnviadas);
+		usuarioBasico.actualizarCategoria();
 
-			Boolean usuarioConEstadoNuevoBasico = usuarioBasico.esUsuarioBasico();
-			assertTrue(usuarioConEstadoAnteriorExperto);
-			assertTrue(usuarioConEstadoNuevoBasico);
+		Boolean usuarioConEstadoNuevoBasico = usuarioBasico.esUsuarioBasico();
+		assertTrue(usuarioConEstadoAnteriorExperto);
+		assertTrue(usuarioConEstadoNuevoBasico);
 
-		}
+	}
 
-		@Test
-		void testUsuarioConEstadoExperto()
-		//Un usuario con estado de usuario experto opina sobre una muestra en EstadoVotadaPorExperto Y le envia el mensaje a VerificarMuestra
-				throws Exception {
-			usuarioExperto.setMuestras(muestrasEnviadas);
-			usuarioExperto.setOpinionesEnviadas(opiniones);
-			usuarioExperto.actualizarCategoria();
-			usuarioExperto.agregarOpinionAMuestraVotadaPorExperto(muestra, opinion);
-			verify(muestra).agregarLaOpinionDelUsuario(opinion, usuarioExperto);
-		}
+	@Test
+	void testUsuarioConEstadoExperto()
+			// Un usuario con estado de usuario experto opina sobre una muestra en
+			// EstadoVotadaPorExperto Y le envia el mensaje a VerificarMuestra
+			throws Exception {
+		usuarioExperto.setMuestras(muestrasEnviadas);
+		usuarioExperto.setOpinionesEnviadas(opiniones);
+		usuarioExperto.actualizarCategoria();
+		usuarioExperto.agregarOpinionAMuestraVotadaPorExperto(muestra, opinion);
+		verify(muestra).agregarLaOpinionDelUsuario(opinion, usuarioExperto);
+	}
 
-		@Test
-		void testUsuarioConEstadoDeUsuarioExpertoOpinaSobreUnaMuestra() throws Exception {
-			usuarioExperto.setMuestras(muestrasEnviadas);
-			usuarioExperto.setOpinionesEnviadas(opiniones);
-			usuarioExperto.actualizarCategoria();
-			usuarioExperto.opinarSobreMuestra(muestra, opinion);
-			verify(muestra).verificarMuestraConOpinionDeUsuario(opinion, usuarioExperto);
-		}
-		
-		// TEST USUARIO ESPECIALISTA
-		@Test
-		void testUsuarioEspecialistaSiempreTieneEstadoExperto() {
-			usuarioEspecialista.cambiarAUsuarioEspecialista();
+	@Test
+	void testUsuarioConEstadoDeUsuarioExpertoOpinaSobreUnaMuestra() throws Exception {
+		usuarioExperto.setMuestras(muestrasEnviadas);
+		usuarioExperto.setOpinionesEnviadas(opiniones);
+		usuarioExperto.actualizarCategoria();
+		usuarioExperto.opinarSobreMuestra(muestra, opinion);
+		verify(muestra).verificarMuestraConOpinionDeUsuario(opinion, usuarioExperto);
+	}
 
-			assertFalse(usuarioEspecialista.esUsuarioBasico());
-			assertTrue(usuarioEspecialista.esUsuarioExperto());
-		}
+	// TEST USUARIO ESPECIALISTA
+	@Test
+	void testUsuarioEspecialistaSiempreTieneEstadoExperto() {
+		usuarioEspecialista.cambiarAUsuarioEspecialista();
 
-		@Test
-		void testUsuarioEspecialistaQuiereCambiarDeEstado() {
-			//Un usuario especialista quiere cambiar de estado pero no puede ya que no puede cambiar de estado ya que siempre es experto
-			usuarioEspecialista.cambiarAUsuarioEspecialista();
+		assertFalse(usuarioEspecialista.esUsuarioBasico());
+		assertTrue(usuarioEspecialista.esUsuarioExperto());
+	}
 
-			usuarioEspecialista.actualizarCategoria();
-			assertTrue(usuarioEspecialista.esUsuarioExperto());
+	@Test
+	void testUsuarioEspecialistaQuiereCambiarDeEstado() {
+		// Un usuario especialista quiere cambiar de estado pero no puede ya que no
+		// puede cambiar de estado ya que siempre es experto
+		usuarioEspecialista.cambiarAUsuarioEspecialista();
 
-		}
+		usuarioEspecialista.actualizarCategoria();
+		assertTrue(usuarioEspecialista.esUsuarioExperto());
 
-		@Test
-		void testUsuarioEnviaMuestra() {
-			//Un usuario envia una Muestra envia mensaje a la aplicion web para registrarla
-			
-			usuarioBasico.enviarMuestra(muestra,app);
-			verify(app).registrarMuestra(muestra);
-		}
+	}
 
-		@Test
-		void testUsuarioEmiteUnaOpinionYLeEnviaElMensajeDeAgregarOpinionALaMuestra() throws Exception {
-			usuarioBasico.opinarSobreMuestra(muestra, opinion);
-			verify(muestra).agregarLaOpinionDelUsuario(opinion, usuarioBasico);
-		}
+	@Test
+	void testUsuarioEnviaMuestra() {
+		// Un usuario envia una Muestra envia mensaje a la aplicion web para registrarla
+
+		usuarioBasico.enviarMuestra(muestra, app);
+		verify(app).registrarMuestra(muestra);
+	}
+
+	@Test
+	void testUsuarioEmiteUnaOpinionYLeEnviaElMensajeDeAgregarOpinionALaMuestra() throws Exception {
+		usuarioBasico.opinarSobreMuestra(muestra, opinion);
+		verify(muestra).agregarLaOpinionDelUsuario(opinion, usuarioBasico);
+	}
 }
-
-		
-
-
