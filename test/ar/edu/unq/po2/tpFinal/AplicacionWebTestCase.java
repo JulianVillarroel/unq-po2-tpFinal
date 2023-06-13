@@ -1,22 +1,21 @@
 package ar.edu.unq.po2.tpFinal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
-
 import ar.edu.unq.po2.tpFinal.EstadoDeUsuario.Usuario;
 import ar.edu.unq.po2.tpFinal.Filtros.BusquedaDeMuestra;
-import ar.edu.unq.po2.tpFinal.Ubicaciones.ZonaDeCobertura;
 import ar.edu.unq.po2.tpFinal.Ubicaciones.Ubicacion;
+import ar.edu.unq.po2.tpFinal.Ubicaciones.ZonaDeCobertura;
 
 class AplicacionWebTestCase {
 
