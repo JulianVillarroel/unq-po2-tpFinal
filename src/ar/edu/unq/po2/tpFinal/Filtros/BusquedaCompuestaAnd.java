@@ -20,4 +20,15 @@ public class BusquedaCompuestaAnd extends BusquedaCompuesta {
 		return muestras;
 	}
 
+	@Override
+	protected ArrayList<Muestra> formatoBusqueda(ArrayList<Muestra> listaUno, ArrayList<Muestra> listaDos) {
+		ArrayList<Muestra> resultado = new ArrayList<Muestra>();
+		for(Muestra muestra:listaDos) {
+			if(this.condicionFormato(listaUno,muestra)) {
+				resultado.add(muestra);
+			}
+		}		
+		return resultado;
+	}
+
 }

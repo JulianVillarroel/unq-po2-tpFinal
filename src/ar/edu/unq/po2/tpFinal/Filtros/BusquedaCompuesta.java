@@ -37,15 +37,7 @@ public abstract class BusquedaCompuesta extends BusquedaDeMuestra {
 		
 	}
 	
-	private ArrayList<Muestra> formatoBusqueda(ArrayList<Muestra> listaUno, ArrayList<Muestra> listaDos) {
-		ArrayList<Muestra> resultado = new ArrayList<Muestra>();
-		for(Muestra muestra:listaUno) {
-			if(this.condicionFormato(listaDos,muestra)) {
-				resultado.add(muestra);
-			}
-		}		
-		return resultado;
-	}
+	protected abstract ArrayList<Muestra> formatoBusqueda(ArrayList<Muestra> listaUno, ArrayList<Muestra> listaDos);
 
 	protected abstract boolean condicionFormato(ArrayList<Muestra> lista, Muestra elemento);
 	

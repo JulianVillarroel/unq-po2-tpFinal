@@ -73,10 +73,14 @@ class FilroTestCase {
 		when(muestraGuasayana.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 5, 15));
 		when(muestraSordida.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 5, 15));
 
-		when(estadoVerificada.getNivelDeVerificacion(muestraInfestans)).thenReturn("verificada");
-		when(estadoVotada.getNivelDeVerificacion(muestraGuasayana)).thenReturn("votada");
-		when(estadoVerificada.getNivelDeVerificacion(muestraSordida)).thenReturn("verificada");
-
+		when(muestraInfestans.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 2, 12));
+		when(muestraGuasayana.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 5, 15));
+		when(muestraSordida.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 5, 15));
+		
+		when(muestraInfestans.getNivelDeVerificacion()).thenReturn("verificada");
+		when(muestraGuasayana.getNivelDeVerificacion()).thenReturn("votada");
+		when(muestraSordida.getNivelDeVerificacion()).thenReturn("verificada");
+		
 		muestras = new ArrayList<Muestra>(Arrays.asList(muestraInfestans, muestraGuasayana, muestraSordida));
 
 	}
@@ -186,9 +190,9 @@ class FilroTestCase {
 		busquedaCompuestaOR.addBusqueda(busquedaNivelVerificacionVotada);
 		busquedaCompuestaOR.addBusqueda(busquedaInsectoInfestans);
 		// muestras de nivel "votada" OR infestans
-
+		
 		ArrayList<Muestra> listaFiltrada = busquedaCompuestaOR.buscar(muestras);
-
+		
 		assertTrue(listaFiltrada.contains(muestraGuasayana));
 		assertTrue(listaFiltrada.contains(muestraInfestans));
 		assertFalse(listaFiltrada.contains(muestraSordida));
