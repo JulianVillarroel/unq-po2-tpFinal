@@ -112,7 +112,7 @@ class FilroTestCase {
 	void testBusquedaPorNivelDeVerificacionConEstadoVerificadoMuestrasInfestansYSordida() {
 		ArrayList<Muestra> listaFiltrada = busquedaNivelVerificacionVerificada.buscar(muestras);
 
-		assertTrue(listaFiltrada.contains(muestraInfestans));
+		assertTrue(listaFiltrada.contains(muestraInfestans)); 
 		assertTrue(listaFiltrada.contains(muestraSordida));
 		assertFalse(listaFiltrada.contains(muestraGuasayana));
 	}
