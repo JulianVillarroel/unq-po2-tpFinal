@@ -13,7 +13,7 @@ public abstract class BusquedaDeMuestra {
 		ArrayList<Muestra> resultado = new ArrayList<Muestra>();
 		for (Muestra muestra : muestras) {
 			if (this.condicionBusqueda(muestra)) {
-				resultado.add(muestra);
+				resultado.add(muestra); 
 			}
 		}
 		return resultado;

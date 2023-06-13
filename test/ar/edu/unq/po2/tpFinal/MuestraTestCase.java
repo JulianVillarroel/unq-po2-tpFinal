@@ -229,10 +229,5 @@ class MuestraTestCase {
 		assertEquals(Calificacion.CHINCHE_FOLIADA, muestra.getResultadoActual());
 	}
 	
-	@Test
-	void test() {
-		
-	}
-
 
 }
