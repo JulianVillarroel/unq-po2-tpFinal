@@ -24,20 +24,20 @@ class FilroTestCase {
 	BusquedaDeMuestra busquedaVotacion;
 	BusquedaDeMuestra busquedaNivelVerificacionVotada;
 	BusquedaDeMuestra busquedaNivelVerificacionVerificada;
-	
+
 	BusquedaCompuesta busquedaCompuestaAnd;
 	BusquedaCompuesta busquedaCompuestaAnd2;
 	BusquedaCompuesta busquedaCompuestaOR;
 	BusquedaCompuesta busquedaCompuestaOR2;
-	
+
 	ArrayList<Muestra> muestras;
-	
+
 	Muestra muestraInfestans;
 	Muestra muestraGuasayana;
 	Muestra muestraSordida;
-	
+
 	Opinion opinion;
-	
+
 	EstadoDeMuestra estadoVotada;
 	EstadoDeMuestra estadoVerificada;
 
@@ -76,11 +76,11 @@ class FilroTestCase {
 		when(muestraInfestans.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 2, 12));
 		when(muestraGuasayana.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 5, 15));
 		when(muestraSordida.getFechaUltimaVotacion()).thenReturn(LocalDate.of(2022, 5, 15));
-		
+
 		when(muestraInfestans.getNivelDeVerificacion()).thenReturn("verificada");
 		when(muestraGuasayana.getNivelDeVerificacion()).thenReturn("votada");
 		when(muestraSordida.getNivelDeVerificacion()).thenReturn("verificada");
-		
+
 		muestras = new ArrayList<Muestra>(Arrays.asList(muestraInfestans, muestraGuasayana, muestraSordida));
 
 	}
@@ -116,7 +116,7 @@ class FilroTestCase {
 	void testBusquedaPorNivelDeVerificacionConEstadoVerificadoMuestrasInfestansYSordida() {
 		ArrayList<Muestra> listaFiltrada = busquedaNivelVerificacionVerificada.buscar(muestras);
 
-		assertTrue(listaFiltrada.contains(muestraInfestans)); 
+		assertTrue(listaFiltrada.contains(muestraInfestans));
 		assertTrue(listaFiltrada.contains(muestraSordida));
 		assertFalse(listaFiltrada.contains(muestraGuasayana));
 	}
@@ -148,7 +148,7 @@ class FilroTestCase {
 	}
 
 	@Test
-	void testBusquedaCompuestaANDConBusquedaTipoDeInsectoBusquedaFechaCreacionYBusquedaNivelVerificacionVerificada () {
+	void testBusquedaCompuestaANDConBusquedaTipoDeInsectoBusquedaFechaCreacionYBusquedaNivelVerificacionVerificada() {
 		busquedaCompuestaAnd = new BusquedaCompuestaAnd();
 		busquedaCompuestaAnd.addBusqueda(busquedaFecha);
 		busquedaCompuestaAnd.addBusqueda(busquedaInsectoInfestans);
@@ -170,7 +170,7 @@ class FilroTestCase {
 		busquedaCompuestaAnd2 = new BusquedaCompuestaAnd();
 		busquedaCompuestaAnd2.addBusqueda(busquedaFecha);
 		busquedaCompuestaAnd2.addBusqueda(busquedaVotacion);
-		
+
 		busquedaCompuestaAnd = new BusquedaCompuestaAnd();
 		busquedaCompuestaAnd.addBusqueda(busquedaInsectoGuasayana);
 		busquedaCompuestaAnd.addBusqueda(busquedaCompuestaAnd2);
@@ -190,9 +190,9 @@ class FilroTestCase {
 		busquedaCompuestaOR.addBusqueda(busquedaNivelVerificacionVotada);
 		busquedaCompuestaOR.addBusqueda(busquedaInsectoInfestans);
 		// muestras de nivel "votada" OR infestans
-		
+
 		ArrayList<Muestra> listaFiltrada = busquedaCompuestaOR.buscar(muestras);
-		
+
 		assertTrue(listaFiltrada.contains(muestraGuasayana));
 		assertTrue(listaFiltrada.contains(muestraInfestans));
 		assertFalse(listaFiltrada.contains(muestraSordida));
@@ -203,7 +203,7 @@ class FilroTestCase {
 		busquedaCompuestaOR2 = new BusquedaCompuestaOr();
 		busquedaCompuestaOR2.addBusqueda(busquedaVotacion);
 		busquedaCompuestaOR2.addBusqueda(busquedaInsectoGuasayana);
-		
+
 		busquedaCompuestaOR = new BusquedaCompuestaOr();
 		busquedaCompuestaOR.addBusqueda(busquedaNivelVerificacionVerificada);
 		busquedaCompuestaOR.addBusqueda(busquedaCompuestaOR2);
@@ -220,7 +220,7 @@ class FilroTestCase {
 		busquedaCompuestaOR = new BusquedaCompuestaOr();
 		busquedaCompuestaOR.addBusqueda(busquedaNivelVerificacionVerificada);
 		busquedaCompuestaOR.addBusqueda(busquedaVotacion);
-		
+
 		busquedaCompuestaAnd = new BusquedaCompuestaAnd();
 		busquedaCompuestaAnd.addBusqueda(busquedaInsectoSordida);
 		busquedaCompuestaAnd.addBusqueda(busquedaCompuestaOR);
@@ -231,6 +231,5 @@ class FilroTestCase {
 		assertFalse(listaFiltrada.contains(muestraGuasayana));
 		assertFalse(listaFiltrada.contains(muestraInfestans));
 	}
-
 
 }
