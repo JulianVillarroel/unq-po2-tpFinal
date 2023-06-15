@@ -90,7 +90,6 @@ class MuestraTestCase {
 
 		assertEquals(Calificacion.CHINCHE_FOLIADA, muestra.getResultadoActual());
 		assertThrows(Exception.class, () -> muestra.agregarLaOpinion(opinionGuasayana, villaBasico));
-
 	}
 
 	@Test
